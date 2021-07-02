@@ -5,6 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import UserRoute from "./routes/UserRoute";
 import { config as  dotenv } from "dotenv";
+import AuthRoute from "./routes/AuthRoute";
 
 class App
 {
@@ -34,6 +35,7 @@ class App
         });
  
         this.app.use("/users", UserRoute);
+        this.app.use("/auth", AuthRoute);
     }
 }
 
