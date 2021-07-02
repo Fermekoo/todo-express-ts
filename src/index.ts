@@ -3,7 +3,6 @@ import morgan from "morgan";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
-import UserRoute from "./routes/UserRoute";
 import { config as  dotenv } from "dotenv";
 import AuthRoute from "./routes/AuthRoute";
 
@@ -33,8 +32,7 @@ class App
         this.app.route("/").get((req: Request, res: Response) => {
             res.send("running well");
         });
- 
-        this.app.use("/users", UserRoute);
+
         this.app.use("/auth", AuthRoute);
     }
 }
