@@ -1,7 +1,7 @@
 
 import AuthController from "../controllers/AuthController";
 import BaseRoute from "./BaseRoute";
-import validate from "../middlewares/AuthValidator";
+import validate from "../validators/AuthValidator";
 import { auth } from "../middlewares/AuthMiddleware";
 
 class AuthRoute extends BaseRoute

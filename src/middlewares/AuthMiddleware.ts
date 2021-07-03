@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export const auth = (req: Request, res: Response, next: NextFunction): any => {
     
     if(!req.headers.authorization) {
-        return res.status(401).send("not authenticated");
+        return res.status(401).send({ message: "Not authenticated" });
     }
 
     const secret_key: string = process.env.JWT_SECRET || "secret";
@@ -19,7 +19,7 @@ export const auth = (req: Request, res: Response, next: NextFunction): any => {
            return next();
         }
 
-        return res.send("token invalid");
+        return res.send({ message: "Invalid token" });
 
     } catch (error) {
 

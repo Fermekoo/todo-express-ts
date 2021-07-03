@@ -1,20 +1,12 @@
-import {Request} from "express";
+import { Request } from "express";
+import BaseService from "./BaseService";
 const db = require("../db/models");
 
-class UserService
+class UserService extends BaseService
 {
-    credetial: {
-        id: number
-    };
-
-    body: Request['body'];
-    params: Request['params'];
-
     constructor(req: Request)
     {
-        this.credetial = req.app.locals.credential;
-        this.body = req.body;
-        this.params = req.params;
+        super(req);
     }
 
     findBy = async (field: string, value: any) => {
@@ -37,7 +29,7 @@ class UserService
     }
 
     profile = async () => {
-        const user = db.user.findByPk(this.credetial.id);
+        const user = db.user.findByPk(this.credential.id);
 
         return user;
     }

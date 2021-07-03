@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { check, validationResult } from "express-validator";
-import { noExtendLeft } from "sequelize/types/lib/operators";
 
 const validate = [
-    check("username").isString().withMessage("username tidak boleh kosong"),
-    check("password").isLength({ min:6 }).withMessage("passsword minimal 6 karakter"),
+    check("categoryName").isString().withMessage("Nama kategori tidak boleh kosong"),
+    check("categoryType").isString().withMessage("Tipe kategori tidak boleh kosong").isIn(['Expense','Income']).withMessage("Pilihan tipe kategori tidak valid"),
     (req: Request, res: Response, next: NextFunction) => {
         const errors = validationResult(req);
 
